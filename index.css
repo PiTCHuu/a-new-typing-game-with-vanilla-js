@@ -1,0 +1,223 @@
+:root {
+  --primary-color: #b08d57;
+  --primary-dark: #8c6d43;
+  --primary-light: #d4b483;
+  --secondary-color: #222222;
+  --text-color: #e0e0e0;
+  --error-color: #b84949;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  height: 75vh;
+  width: 75%; 
+  margin: auto;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+}
+
+.left-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  background: linear-gradient(
+    135deg,
+    rgba(176, 141, 87, 0.1) 0%,
+    rgba(140, 109, 67, 0.2) 100%
+  );
+  position: relative;
+  overflow: hidden;
+}
+
+.left-panel::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none"/><path d="M0,0 L100,100 M0,100 L100,0" stroke="rgba(176, 141, 87, 0.1)" stroke-width="1"/></svg>');
+  opacity: 0.5;
+  z-index: -1;
+}
+
+.logo {
+  margin-bottom: 1rem;
+}
+
+.logo-text {
+  font-size: 3.5rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  letter-spacing: 2px;
+}
+
+.welcome-text {
+  font-size: 1.8rem;
+  color: var(--text-color);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.animation-container {
+  height: 80px;
+  overflow: hidden;
+  position: relative;
+}
+
+.animated-text {
+  font-size: 1.8rem;
+  text-align: center;
+  position: absolute;
+  width: 100%;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease;
+}
+
+.animated-text.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.animated-text span {
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+.right-panel {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  background-color: rgba(34, 34, 34, 0.95);
+}
+
+.login-form {
+  width: 80%;
+  max-width: 400px;
+  padding: 2rem;
+  background-color: #1a1a1a;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--primary-dark);
+}
+
+.form-title {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--primary-color);
+  font-size: 1.8rem;
+}
+
+.input-group {
+  margin-bottom: 1.5rem;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+}
+
+.input-field {
+  width: 100%;
+  padding: 0.8rem;
+  background-color: #333;
+  border: 1px solid #444;
+  border-radius: 5px;
+  color: var(--text-color);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(176, 141, 87, 0.3);
+}
+
+.error-message {
+  color: var(--error-color);
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+  display: none;
+}
+
+.login-button {
+  width: 100%;
+  padding: 1rem;
+  background-color: var(--primary-color);
+  color: #222;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+}
+
+.login-button:hover {
+  background-color: var(--primary-dark);
+}
+
+.login-button:active {
+  transform: scale(0.98);
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    width: 90%;
+    height: 85vh;
+  }
+
+  .left-panel,
+  .right-panel {
+    flex: none;
+    width: 100%;
+  }
+
+  .left-panel {
+    height: 40vh;
+    min-height: 300px;
+  }
+
+  .right-panel {
+    height: 60vh;
+  }
+
+  .logo-text {
+    font-size: 2.5rem;
+  }
+
+  .animated-text {
+    font-size: 1.2rem;
+  }
+}
