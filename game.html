@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dactylo_Rush - Improve Your Typing Speed</title>
+    <link rel="stylesheet" href="./game.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script src="./script.js" defer></script>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="left-nav">
+                <div class="logo">
+                    <div class="logo-icon">DR</div>
+                    <div class="logo-text">Dactylo_Rush</div>
+                </div>
+            </div>
+            <div class="right-nav">
+                <button class="theme-toggle" id="theme-toggle">
+                    <i class="fas fa-moon"></i> Theme
+                </button>
+                <button class="leaderboard-toggle" id="leaderboard-toggle">
+                    <i class="fas fa-trophy"></i> Leaderboard
+                </button>
+                <button class="logout-btn" id="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i> Log Out
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="game-container" id="game-container">
+            <div class="mode-selector">
+                <div class="mode-option" data-mode="time">
+                    <i class="fas fa-clock mode-icon"></i> time
+                </div>
+                <div class="mode-option" data-mode="words">
+                    <i class="fas fa-font mode-icon"></i> words
+                </div>
+                <div class="mode-option" data-mode="quote">
+                    <i class="fas fa-quote-right mode-icon"></i> quote
+                </div>
+                <div class="mode-option" data-mode="punctuation">
+                    <i class="fas fa-ellipsis-h mode-icon"></i> punctuation
+                </div>
+                <div class="mode-option" data-mode="numbers">
+                    <i class="fas fa-hashtag mode-icon"></i> numbers
+                </div>
+            </div>
+
+            <div class="timer-options">
+                <div class="timer-option" data-value="15">15</div>
+                <div class="timer-option" data-value="30">30</div>
+                <div class="timer-option active" data-value="60">60</div>
+                <div class="timer-option" data-value="120">120</div>
+            </div>
+
+            <div class="typing-area">
+                <div class="timer-display" id="timer-display">60</div>
+                <div class="progress-bar-container">
+                    <div class="progress-left" id="progress-left"></div>
+                    <div class="progress-right" id="progress-right"></div>
+                </div>
+                <div class="text-display" id="text-display"></div>
+                <div class="input-area">
+                    <input type="text" id="hidden-input">
+                    <div class="focus-indicator" id="focus-indicator">
+                        Click here or press any key to start
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="leaderboard" id="leaderboard">
+            <div class="leaderboard-content">
+                <h2 class="leaderboard-title">Leaderboard</h2>
+                <div class="player-entry">
+                    <div class="player-rank">1</div>
+                    <div class="player-name">Ambra</div>
+                    <div class="player-stats">
+                        <div>120 WPM</div>
+                        <div>600 CPM</div>
+                        <div>98% Accuracy</div>
+                    </div>
+                </div>
+                <div class="player-entry">
+                    <div class="player-rank">2</div>
+                    <div class="player-name">Tsilavina</div>
+                    <div class="player-stats">
+                        <div>110 WPM</div>
+                        <div>550 CPM</div>
+                        <div>97% Accuracy</div>
+                    </div>
+                </div>
+                <div class="player-entry">
+                    <div class="player-rank">3</div>
+                    <div class="player-name">User845</div>
+                    <div class="player-stats">
+                        <div>98 WPM</div>
+                        <div>490 CPM</div>
+                        <div>95% Accuracy</div>
+                    </div>
+                </div>
+                <div class="player-entry">
+                    <div class="player-rank">4</div>
+                    <div class="player-name">SpeedTyper</div>
+                    <div class="player-stats">
+                        <div>95 WPM</div>
+                        <div>475 CPM</div>
+                        <div>94% Accuracy</div>
+                    </div>
+                </div>
+                <div class="player-entry">
+                    <div class="player-rank">5</div>
+                    <div class="player-name">KeyMaster</div>
+                    <div class="player-stats">
+                        <div>92 WPM</div>
+                        <div>460 CPM</div>
+                        <div>93% Accuracy</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="results-overlay" id="results-overlay">
+        <div class="results-container">
+            <div class="results-header">
+                <h2 class="results-title">Your Results</h2>
+                <button class="close-results" id="close-results">&times;</button>
+            </div>
+            <div class="stat-boxes">
+                <div class="stat-box">
+                    <div class="stat-value" id="wpm">0</div>
+                    <div class="stat-label">WPM</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value" id="cpm">0</div>
+                    <div class="stat-label">CPM</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value" id="accuracy">0%</div>
+                    <div class="stat-label">Accuracy</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value" id="time">0s</div>
+                    <div class="stat-label">Time</div>
+                </div>
+            </div>
+            <div class="encouragement-message" id="encouragement-message">
+                Keep practicing to improve your typing speed!
+            </div>
+            <div class="results-actions">
+                <button class="restart-button" id="restart-button">Try Again</button>
+            </div>
+        </div>
+    </div>
+</html>
