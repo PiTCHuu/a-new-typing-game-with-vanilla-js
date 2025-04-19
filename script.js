@@ -487,9 +487,17 @@ function restart() {
     timerDisplay.textContent = currentTimeOption;
     progressLeft.style.width = '0%';
     progressRight.style.width = '0%';
+    textDisplay.innerHTML = '';
+    
     generateText();
     focusIndicator.style.display = 'block';
     resultsOverlay.classList.remove('active');
+
+    wordIndex = 0;
+    charIndex = 0;
+    correctChars = 0;
+    incorrectChars = 0;
+    totalChars = 0;
 }
 
 document.addEventListener('DOMContentLoaded', init);
